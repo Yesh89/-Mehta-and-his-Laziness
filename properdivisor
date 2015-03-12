@@ -1,0 +1,49 @@
+def find_divisor(a):
+    div_count = []
+    per_sqr_count = [] 
+    for i in range(len(a)):
+        x = 0
+        div = []        
+        for j in range(1,a[i]/2+1):
+            if a[i]%j is 0:
+                div.append(j)
+                x += 1
+        div_count.append(x)
+        per_sqr_count.append(len(perfect_sqr(div)))         
+    return div_count,per_sqr_count    
+
+def perfect_sqr(div):
+    perf = []
+    for i in range(len(div)):
+        x =0
+        if div[i]%2 == 0:
+            for j in range(1,div[i]):                        
+                if j%2 is 1:
+                    x = x + j
+                    if x == div[i]:
+                        perf.append(div[i])                        
+                        break
+                    if x > div[i]:                        
+                        break               
+    
+    return perf
+
+
+T = int(raw_input())
+i = 0
+a = []
+while i < T:
+    a.append(int(raw_input()))
+    i += 1
+
+div_count,per_sqr_count = find_divisor(a)
+#x = perfect_sqr(a)
+
+
+for j in range(len(div_count)):
+    if per_sqr_count[j] == 0:
+        print 0
+    else:
+        print str(per_sqr_count[j])+'/'+str(div_count[j])
+    
+
